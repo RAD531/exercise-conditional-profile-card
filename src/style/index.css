@@ -66,8 +66,10 @@
 }
 .widget h1 {
   margin: 60px 0 20px;
-  font-size: 26px;
   color: #000;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .widget h3 {
   font-size: 12px;

@@ -1,160 +1,165 @@
 <!DOCTYPE html>
 <html>
-  <head>
 
-    <meta charset="utf-8">
-    <title>Profile Card</title>
-    <!-- Required meta tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css?v=1" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Profile Card</title>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
-      crossorigin="anonymous"
-    />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css?v=1" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+    integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
 
-    <link rel="shortcut icon" href="./assets/img/4geeks.ico" />
-    <script type="text/javascript" src="js/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="style/index.css">
 
-  <body>
-  
-    <div class="container-fluid">
-  
-      <div class="row">
+  <link rel="shortcut icon" href="./assets/img/4geeks.ico" />
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
 
-        <div class="col-sm-7 col-xs-12 order-sm-2 p-0 m-0 d-flex flex-column min-vh-100">
-          <div class="d-flex flex-grow-1 justify-content-center align-items-center">
-            <div style="background-image: url(https://images.pexels.com/photos/7130535/pexels-photo-7130535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover;">
-              <div id="widget_content"></div>
-            </div>
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-sm-7 col-xs-12 order-sm-2 p-0 m-0 d-flex flex-column min-vh-100">
+        <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+          <div
+            style="background-image: url(https://images.pexels.com/photos/7130535/pexels-photo-7130535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover;">
+            <div id="widget_content"></div>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-5 col-xs-12 order-sm-1 min-vh-100 pt-3 pb-3 ps-5 pe-5" style="background: linear-gradient(-45deg, #ee7752, #e73c7e, #666a6b, #b2b8b6);">
-  
+      <div class="col-sm-5 col-xs-12 order-sm-1 min-vh-100 pt-3 pb-3 ps-5 pe-5"
+        style="background: linear-gradient(-45deg, #ee7752, #e73c7e, #666a6b, #b2b8b6);">
+
+        <form>
+
           <div class="row ps-3 pe-3 pb-3">
             <div class="col-lg-6">
               <label class="form-label">Include Cover</label>
               <select class="form-select form-select-sm" aria-label="Default select example" for="includeCover"
                 autocomplete="off">
-                <option selected>Please select an option</option>
                 <option value="true">True</option>
                 <option value="false">False</option>
               </select>
             </div>
-  
+
             <div class="col-lg-6">
               <label class="form-label">S.M. Position</label>
               <select class="form-select form-select-sm" aria-label="Default select example" for="socialMediaPosition"
-                autocomplete="off">
-                <option selected value="position-left">Please select an option</option>
+                autocomplete="off" id="pos-dropdown">
                 <option value="position-left">Left</option>
                 <option value="position-right">Right</option>
               </select>
             </div>
           </div>
-  
+
           <div class="row p-3">
             <div class="col-lg-6">
               <label class="form-label">First Name</label>
-              <input type="text" class="form-control form-control-sm" id="name" aria-describedby="name" for="name"
-                autocomplete="off">
-              <div class="invalid-feedback" id="error-label-name"></div>
+              <input type="text" class="form-control form-control-sm is-invalid" id="error-label-name" aria-describedby="error-label-name" for="name"
+                autocomplete="off" required>
+              <div class="invalid-feedback text-dark">Please choose a valid name.</div>
             </div>
-  
+
             <div class="col-lg-6">
               <label class="form-label">Last Name</label>
-              <input type="text" class="form-control form-control-sm" id="lastname" aria-describedby="lastname"
+              <input type="text" class="form-control form-control-sm" id="error-label-last-name" aria-describedby="error-label-last-name"
                 for="lastname" autocomplete="off">
-              <div class="invalid-feedback" id="error-label-last-name"></div>
+              <div class="invalid-feedback text-dark">Please choose a valid last name</div>
             </div>
           </div>
-  
+
           <div class="row p-3">
             <div class="col-lg-6">
               <label class="form-label">Twitter</label>
-              <input type="text" class="form-control form-control-sm" id="twitter" aria-describedby="twitter"
+              <input type="text" class="form-control form-control-sm" id="error-label-url-twitter" aria-describedby="error-label-url-twitter"
                 for="twitter" autocomplete="off">
-              <div class="invalid-feedback" id="error-label-url-twitter"></div>
+              <div class="invalid-feedback text-dark">Please choose a valid URL</div>
             </div>
-  
+
             <div class="col-lg-6">
               <label class="form-label">Github</label>
-              <input type="text" class="form-control form-control-sm" id="github" aria-describedby="github" for="github"
+              <input type="text" class="form-control form-control-sm" id="error-label-url-github" aria-describedby="error-label-url-github" for="github"
                 autocomplete="off">
-              <div class="invalid-feedback" id="error-label-url-github"></div>
+              <div class="invalid-feedback text-dark">Please choose a valid URL</div>
             </div>
           </div>
-  
+
           <div class="row p-3">
             <div class="col-lg-6">
               <label class="form-label">LinkedIn</label>
-              <input type="text" class="form-control form-control-sm" id="linkedin" aria-describedby="linkedin"
+              <input type="text" class="form-control form-control-sm" id="error-label-url-linkedin" aria-describedby="error-label-url-linkedin"
                 for="linkedin" autocomplete="off">
-              <div class="invalid-feedback" id="error-label-url-linkedin"></div>
+              <div class="invalid-feedback text-dark">Please choose a valid URL</div>
             </div>
-  
+
             <div class="col-lg-6">
               <label class="form-label">Instagram</label>
-              <input type="text" class="form-control form-control-sm" id="instagram" aria-describedby="instagram"
+              <input type="text" class="form-control form-control-sm" id="error-label-url-instagram" aria-describedby="error-label-url-instagram"
                 for="instagram" autocomplete="off">
-              <div class="invalid-feedback" id="error-label-url-instagram"></div>
+              <div class="invalid-feedback text-dark">Please choose a valid URL</div>
             </div>
           </div>
-  
+
           <div class="row p-3">
             <div class="col-lg-12">
               <label class="form-label">Role</label>
               <select class="form-select form-select-sm" aria-label="Default select example" for="role"
-                autocomplete="off">
-                <option selected>Please select an option</option>
+                autocomplete="off" id="role-dropdown">
+                <option selected disabled value="">Please select an option</option>
                 <option value="Web Developer">Web Developer</option>
                 <option value="Floor Planner">Floor Planner</option>
                 <option value="Technical Writter">Technical Writter</option>
               </select>
+              <div class="invalid-feedback text-dark">Please choose a role</div>
             </div>
           </div>
-  
+
           <div class="row p-3">
             <div class="col-lg-6">
               <label class="form-label">City</label>
               <select class="form-select form-select-sm" aria-label="Default select example" for="city"
-                autocomplete="off">
-                <option selected>Please select an option</option>
+                autocomplete="off" id="city-dropdown">
+                <option selected disabled value="">Please select an option</option>
                 <option value="Miami">Miami</option>
                 <option value="Munich">Munich</option>
                 <option value="Caracas">Caracas</option>
                 <option value="Toronto">Toronto</option>
               </select>
+              <div class="invalid-feedback text-dark">Please choose a city</div>
             </div>
-  
+
             <div class="col-lg-6">
               <label class="form-label">Country</label>
-              <select class="form-select form-select-sm" aria-label="Default select example" for="country"
-                autocomplete="off">
-                <option selected>Please select an option</option>
+              <select class="form-select form-select-sm is-invalid" aria-label="Default select example" for="country"
+                autocomplete="off" id="country-dropdown">
+                <option selected disabled value="">Please select an option</option>
                 <option value="USA">USA</option>
                 <option value="Germany">Germany</option>
                 <option value="Venezuela">Venezuela</option>
                 <option value="Canada">Canada</option>
               </select>
+              <div class="invalid-feedback text-dark">Please choose a country</div>
             </div>
           </div>
-  
-        </div>
 
+
+        </form>
       </div>
-    </div>
 
-    <!--
+    </div>
+  </div>
+
+  <!--
     <ul class="filters">
       <li>
         <label>Include Cover</label>
@@ -231,7 +236,8 @@
       </li>
     </ul>-->
 
-    <!-- do not remove this bundle.js tag -->
-    <script type="text/javascript" src="/main.bundle.js"></script>
-  </body>
+  <!-- do not remove this bundle.js tag -->
+  <script type="text/javascript" src="/main.bundle.js"></script>
+</body>
+
 </html>
