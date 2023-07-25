@@ -1,4 +1,4 @@
-import "../style/index.css";
+//import "../style/index.css";
 
 /**
  *  EDIT ONLY INSIDE THIS RENDER FUNCTION
@@ -22,34 +22,108 @@ import "../style/index.css";
         city: null
     }
  */
+
+function checkValidText(text) {
+  if (text === null || text.length <= 0) {
+    return false;
+  }
+
+  return true;
+}
+
+function checkFirstName(firstName, errorElement) {
+  //check first name
+  if (checkValidText(firstName)) {
+    document.getElementById(errorElement).innerHTML = null;
+    return firstName;
+  }
+
+  else {
+    document.getElementById(errorElement).innerHTML = "Please enter a valid first name"
+    return "First Name Here";
+  }
+}
+
+function checkLastName(lastname, errorElement) {
+  //check last name
+  if (checkValidText(lastname)) {
+    document.getElementById(errorElement).innerHTML = null;
+    return lastname;
+  }
+
+  else {
+    document.getElementById(errorElement).innerHTML = "Please enter a valid last name"
+    return "Last Name Here";
+  }
+}
+
+function checkDropDown(dropDownValue){
+  if (dropDownValue === null){
+    return "Please select an option";
+  }
+
+  else{
+    return dropDownValue;
+  }
+}
+
+function checkURL(url, errorElement){
+  if (url === null || url.length <= 0){
+    document.getElementById(errorElement).innerHTML = null;
+    return "#";
+  }
+
+  else{
+    document.getElementById(errorElement).innerHTML = "Please enter a valid URL"
+    return url;
+  }
+}
+
+function checkCover(cover, background){
+  if (cover == false){
+    return "<div class='cover'></div>";
+  }
+
+  else{
+    return `<div class="cover"><img src="${background}" /></div>`;
+  }
+}
+
+function renderBody(variables = {}) {
+
+  let htmlContent = [];
+
+  htmlContent.push(`<div class="widget">`);
+  htmlContent.push(`${checkCover(variables.includeCover, variables.background)}`);
+  htmlContent.push(`<img src="${variables.avatarURL}" class="photo" />`);
+  htmlContent.push(`<h1>${checkFirstName(variables.name, "error-label-name")} ${checkLastName(variables.lastname, "error-label-last-name")}</h2>`);
+  htmlContent.push(`<h2>${checkDropDown(variables.role)}</h2>`);
+  htmlContent.push(`<h3>${checkDropDown(variables.city)}, ${checkDropDown(variables.country)}</h3>`);
+  htmlContent.push(`<ul class="${variables.socialMediaPosition}">`);
+  htmlContent.push(`<li><a href="${checkURL(variables.twitter, "error-label-url-twitter")}" target="_blank"><i class="fab fa-twitter"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.github, "error-label-url-github")}" target="_blank"><i class="fab fa-github"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.linkedin, "error-label-url-linkedin")}" target="_blank"><i class="fab fa-linkedin"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.instagram, "error-label-url-instagram")}" target="_blank"><i class="fab fa-instagram"></i></a></li>`);
+  htmlContent.push(`</ul>`);
+  htmlContent.push(`</div>`);
+
+  return htmlContent.join("");
+
+}
+
 function render(variables = {}) {
-  console.log("These are the current variables: ", variables); //print on the console
+  //console.log("These are the current variables: ", variables); //print on the console
+
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
-  let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
-  if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
-  // reset the website body with the new html output
-  document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-    `;
+    document.querySelector("#widget_content").innerHTML = renderBody(variables);
 }
 
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
-window.onload = function() {
+window.onload = function () {
   window.variables = {
     // if includeCover is true the algorithm should
     includeCover: true,
@@ -72,19 +146,20 @@ window.onload = function() {
   };
   render(window.variables); //render the card for the first time
 
-  document.querySelectorAll(".picker").forEach(function(elm) {
-    elm.addEventListener("change", function(e) {
+  document.querySelectorAll(".form-select, .form-control").forEach(function (elm) {
+    elm.addEventListener("change", function (e) {
       // <- add a listener to every input
       const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
+      console.log(attribute);
       let values = {};
       values[attribute] =
         this.value == "" || this.value == "null"
           ? null
           : this.value == "true"
-          ? true
-          : this.value == "false"
-          ? false
-          : this.value;
+            ? true
+            : this.value == "false"
+              ? false
+              : this.value;
       render(Object.assign(window.variables, values)); // render again the card with new valus
     });
   });

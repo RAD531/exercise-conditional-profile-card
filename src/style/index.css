@@ -12,12 +12,18 @@
   font-size: 12px;
   font-weight: 900;
 }
+
+.filters li label[id^='error'] {
+  font-size: 8px;
+}
+
 .filters li input {
   width: 100%;
 }
 .filters li select {
   width: 100%;
 }
+
 .widget {
   position: relative;
   width: 300px;
