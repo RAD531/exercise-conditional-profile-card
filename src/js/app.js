@@ -126,10 +126,10 @@ function renderBody(variables = {}) {
   htmlContent.push(`<h2>${checkDropDown(variables.role, "role-dropdown")}</h2>`);
   htmlContent.push(`<h3>${checkDropDown(variables.city, "city-dropdown")}, ${checkDropDown(variables.country, "country-dropdown")}</h3>`);
   htmlContent.push(`<ul class="${variables.socialMediaPosition}">`);
-  htmlContent.push(`<li><a href="${checkURL(variables.twitter, "error-label-url-twitter")}" target="_blank"><i class="fab fa-twitter"></i></a></li>`);
-  htmlContent.push(`<li><a href="${checkURL(variables.github, "error-label-url-github")}" target="_blank"><i class="fab fa-github"></i></a></li>`);
-  htmlContent.push(`<li><a href="${checkURL(variables.linkedin, "error-label-url-linkedin")}" target="_blank"><i class="fab fa-linkedin"></i></a></li>`);
-  htmlContent.push(`<li><a href="${checkURL(variables.instagram, "error-label-url-instagram")}" target="_blank"><i class="fab fa-instagram"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.twitter, "error-label-url-twitter")}" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.github, "error-label-url-github")}" target="_blank"><i class="fa-brands fa-github"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.linkedin, "error-label-url-linkedin")}" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>`);
+  htmlContent.push(`<li><a href="${checkURL(variables.instagram, "error-label-url-instagram")}" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>`);
   htmlContent.push(`</ul>`);
   htmlContent.push(`</div>`);
 

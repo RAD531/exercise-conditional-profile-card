@@ -76,15 +76,15 @@
 }
 .widget ul {
   position: absolute;
-  top: 20px;
+  top: 11px;
   padding: 0;
   background: #2cdfd3;
 }
 .widget ul.position-left {
-  left: -26px;
+  left: -28px;
 }
 .widget ul.position-right {
-  right: -27px;
+  right: -28px;
 }
 .widget ul li {
   list-style: none;
