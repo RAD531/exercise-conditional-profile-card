@@ -101,6 +101,12 @@ function checkURL(url, errorElement) {
   else {
     urlElement.classList.add("is-valid");
     urlElement.classList.remove("is-invalid");
+
+    //add https on if not found, if http is found, leave it
+    if (!/^https?:\/\//i.test(url)) {
+    url = "https://" + url;
+    }
+
     return url;
   }
 }
